@@ -1,4 +1,5 @@
-from utils import *
+from utils import COLORS
+import pygame
 
 class Spot:
     # --- Constructor ---
@@ -89,15 +90,15 @@ class Spot:
         Returns:
             None
         """
-        self.color = COLORS['RED']
+        self.color = COLORS['TURQUOISE']
 
     def make_open(self) -> None:
         """
-        Mark the spot as open (green).
+        Mark the spot as open (blue).
         Returns:
             None
         """
-        self.color = COLORS['GREEN']
+        self.color = COLORS['DARK PINK']
 
     def make_barrier(self) -> None:
         """
