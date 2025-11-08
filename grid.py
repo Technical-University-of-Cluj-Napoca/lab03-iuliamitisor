@@ -1,5 +1,6 @@
-from utils import *
+from utils import COLORS
 from spot import Spot
+import pygame
 
 class Grid:
     def __init__(self, win: pygame.Surface, rows: int, cols: int, width: int, height: int):
@@ -50,20 +51,21 @@ class Grid:
             # draw vertical lines
             pygame.draw.line(self.win, COLORS['GREY'], (j * spot_width, 0), (j * spot_width, self.height))
 
-    def draw(self) -> None:
+    def draw(self, update_display=True) -> None:
         """
         Draw the entire grid and its spots on the Pygame window.
         Returns:
             None
         """
-        self.win.fill(COLORS['WHITE'])  # fill the window with white color
+        self.win.fill(COLORS['PINK'])  # fill the window with pink color
 
         for row in self.grid:
             for spot in row:
                 spot.draw(self.win)   # draw each spot
 
-        self.draw_grid_lines()        # draw the grid lines          
-        pygame.display.update()       # update the display
+        self.draw_grid_lines()        # draw the grid lines
+        if update_display:
+            pygame.display.update()   # update the display if requested
 
     def get_clicked_pos(self, pos: tuple[int, int]) -> tuple[int, int]:
         """
